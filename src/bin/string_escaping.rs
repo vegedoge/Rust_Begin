@@ -1,4 +1,5 @@
 fn main() {
+    // string secaping: 字符串转义
     // 通过 \ + 字符的十六进制表示，转义输出一个字符
     let byte_escape = "I'm writing \x52\x75\x73\x74!";
     println!("What are you doing\x3F (\\x3F means ?) {}", byte_escape);
