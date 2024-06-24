@@ -1,4 +1,5 @@
 // enum Option learning
+#![allow(unused)]
 fn main()
 {
     let five = Some(5);
