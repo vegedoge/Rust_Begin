@@ -1,8 +1,10 @@
 
 // practice for panic and result<T, E>
 use std::{fs::File, io::ErrorKind};
+use std::num::ParseIntError;
 
-fn main(){
+fn main() -> Result<(), ParseIntError>
+{
     let f = File::open("hello.txt");
 
     let f = match f {
@@ -17,4 +19,9 @@ fn main(){
         },
         
     };
+    let number_str = "10";
+    let number = number_str.parse::<i32>()?;
+    println!("{}", number);
+    Ok(())
+
 }
