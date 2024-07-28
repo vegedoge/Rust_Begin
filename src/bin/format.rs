@@ -43,5 +43,4 @@ fn main(){
     // names must be put behind anonymous ones
     println!("a is {a}, b is {}, c is {c}","Bob", a = "Alice", c = "Kevin");
     
-
 }
