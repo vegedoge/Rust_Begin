@@ -1,4 +1,4 @@
-use std::vec;
+use std::{collections::HashMap, vec};
 
 // practice for iterator
 fn main()
@@ -51,4 +51,42 @@ fn main()
     }
     println!("test after iter_mut() is {:?}", test);
 
+    // collect
+    let names = ["Asher", "Amir"];
+    let ages = [28, 38];
+    let folks: HashMap<_,_> = names.into_iter().zip(ages.into_iter()).collect();
+
+    println!("{:?}", folks);
+
+    let mut counter = Counter::new();
+    assert_eq!(counter.next(), Some(1));
+
+
+}
+
+struct Counter 
+{
+    count: u32,
+}
+
+impl Counter
+{
+    fn new() -> Counter 
+    {
+        Counter { count: 0}
+    }
+}
+
+impl Iterator for Counter 
+{
+    type Item = u32;
+    fn next(&mut self) -> Option::<Self::Item>
+    {
+        if self.count < 5 {
+            self.count += 1;
+            Some(self.count)
+        } else {
+            None
+        }
+    }
 }
