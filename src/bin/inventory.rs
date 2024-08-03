@@ -51,3 +51,36 @@ impl Electronic {
         println!("using {}, made by {}", self.name, self.brand);
     }
 }
+
+#[derive(Debug)]
+struct Inventory<T: Item> {
+    items: Vec<T>,
+}
+
+impl <T: Item> Inventory<T> {
+    fn new() -> Self {
+        inventory { items: Vec::new() }
+    }
+
+    fn add_item(&mut self, item: T) {
+        self.items.push(item);
+    }
+
+    fn remove_item(&mut self, name: &str) {
+        if let Some(index) = self.items.iter().position
+            (|item| item.name() == name) {
+                self.items.remove(index);
+            }
+    }
+
+    fn find_item(&self, name: &str) -> Option<&T> {
+        self.items.iter().find(|item| item.name() == name)
+    }
+
+}
+
+fn main() {
+    let mut book_inventory = Inventory::new();
+    let book = Book::new("Just for fun".to_string(), "Linus".to_string(), "262");
+    book_inventory.add_item(book);
+}
