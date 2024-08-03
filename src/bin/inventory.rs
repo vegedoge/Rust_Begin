@@ -59,7 +59,7 @@ struct Inventory<T: Item> {
 
 impl <T: Item> Inventory<T> {
     fn new() -> Self {
-        inventory { items: Vec::new() }
+        Inventory { items: Vec::new() }
     }
 
     fn add_item(&mut self, item: T) {
@@ -80,7 +80,27 @@ impl <T: Item> Inventory<T> {
 }
 
 fn main() {
+    // Create book inventory
     let mut book_inventory = Inventory::new();
-    let book = Book::new("Just for fun".to_string(), "Linus".to_string(), "262");
+    let book = Book::new("Just for fun".to_string(), "Linus".to_string(), 262);
     book_inventory.add_item(book);
+    if let Some(book) = book_inventory.find_item("Just for fun") {
+        book.read();
+    }
+
+    // Create electronic inventory
+    let mut e_inventory = Inventory::new();
+    let drone = Electronic::new("Mavic2".to_string(), "DJI".to_string(), 2);
+    let phone = Electronic::new("Pixel5".to_string(), "Google".to_string(), 1);
+    e_inventory.add_item(drone);
+    e_inventory.add_item(phone);
+    if let Some(drone) = e_inventory.find_item("Mavic2") {
+        drone.use_device();
+    }
+    
+    println!("Book inventory:{:?}", book_inventory);
+    println!("\nElectronic inventory:{:?}", e_inventory);
+
+    e_inventory.remove_item("Mavic2");
+    println!("\nElectronic inventory left:{:?}", e_inventory);
 }
