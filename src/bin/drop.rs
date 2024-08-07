@@ -37,6 +37,7 @@ fn main() {
         one: HasDrop1,
         two: HasDrop2,
     };
-    let _foo = Foo;
+    let foo = Foo;
+    drop(foo);
     println!("Running");
 }
