@@ -2,12 +2,12 @@
 // n = 3n + 1 (n is odd)
 // find the longest chain under 1M
 fn main() {
-    let mut counter: i64 = 1;
+    // let mut counter: i64 = 1;
     let mut longest_num: i64= 1;
     let mut longest_length: i64= 1;
     for n in 1..= 1000000 {
         let mut x = n;
-        counter = 1;
+        let mut counter = 1;
         while x > 1 {
             counter += 1;
             if x % 2 == 0 {
